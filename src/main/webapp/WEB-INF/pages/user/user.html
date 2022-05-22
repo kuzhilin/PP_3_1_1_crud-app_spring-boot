@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <style>
+        p{font-size: 50px}
+        button,input{font-size: 25px}
+    </style>
+</head>
+<body>
+<p th:text="'Имя: '+${user.name}"></p>
+<p th:text="'Фамилия: '+${user.surname}"></p>
+<p th:text="'Email: '+${user.email}"></p>
+<p th:text="'Локация: '+${user.location}"></p>
+</body>
+<a th:href="${user.id}+'/edit'">
+    <button>Редактировать</button>
+</a>
+<form th:method="delete" th:action="@{/user/{id}(id=${user.id})}" th:object="${user}">
+    <input type="submit" value="Удалить">
+</form>
+</html>
